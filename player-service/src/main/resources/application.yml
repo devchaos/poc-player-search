@@ -1,0 +1,32 @@
+spring:
+  application:
+      name: player-service
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: devchaos
+
+  cloud:
+    stream:
+      bindings:
+        player-out:
+          producer:
+            useNativeEncoding: true
+          destination: player.t
+          contentType: application/json
+      kafka:
+        binder:
+          brokers: localhost:9092
+        bindings:
+          player-out:
+            producer:
+              configuration:
+                value:
+                  serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer
+
+server:
+  port: 8080
