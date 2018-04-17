@@ -22,8 +22,8 @@ Component Diagram
 Running the Applications
 1. You need Docker
 2. `git clone` this repository on your local machine
-3. on your terminal, navigate in the folder poc-player-search created by the `git clone`
-4. start Zookeeper, Kafka, Elasticsearch and MongoDB Docker Containers from your terminal `docker-compose up -d`
+3. on your terminal, navigate in the folder `poc-player-search` created by the `git clone`
+4. start Zookeeper, Kafka, Elasticsearch and MongoDB Docker Containers from your terminal typing `docker-compose up -d`
 - 4.1. this can take a while until the images get downloaded
 - 4.2. when the process finishes, please make sure you have 4 containers running. use `docker ps`
 5. navigate to folder `player-service`
