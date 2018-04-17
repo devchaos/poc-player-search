@@ -1,4 +1,4 @@
-package io.devchaos.player.search.service.domain;
+package io.devchaos.comm.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PlayerEvent {
-    private String id;
+    private String playerId;
 }

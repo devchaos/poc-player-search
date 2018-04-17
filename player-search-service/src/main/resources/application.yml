@@ -14,8 +14,6 @@ spring:
         player-in:
           consumer:
             useNativeEncoding: true
-            autoCommitOffset: true
-            startOffset: latest
           destination: player.t
           group: player-search-service
           contentType: application/json
@@ -25,33 +23,21 @@ spring:
         bindings:
           player-in:
             consumer:
+              autoCommitOffset: true
+              startOffset: latest
               configuration:
                 value:
-                  serializer: org.springframework.kafka.support.serializer.JsonSerializer
+                  deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
                 key:
-                  serializer: org.apache.kafka.common.serialization.StringSerializer
+                  deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  kafka:
+    consumer:
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: io.devchaos.comm.domain
 
 server:
   port: 8081
-
-#spring:
-#  application:
-#      name: player-search-service
-#  data:
-#    mongodb:
-#      host: localhost
-#      port: 27017
-#      database: devchaos
-#  cloud:
-#    stream:
-#      kafka:
-#        binder:
-#         brokers: localhost:9092
-#      bindings:
-#        player-in:
-#          destination: player.t
-#          contentType: application/json
-#          group: player-service
-#          consumer:
-#            autoCommitOffset: true
-#            startOffset: latest

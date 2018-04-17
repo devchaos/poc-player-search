@@ -2,6 +2,7 @@ package io.devchaos.player.service.web;
 
 import io.devchaos.player.service.domain.Player;
 import io.devchaos.player.service.service.PlayerService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +24,9 @@ import java.util.Optional;
  * @author Paulo Jesus
  */
 @RestController
+@AllArgsConstructor
 public class PlayerController {
     private PlayerService playerService;
-
-    public PlayerController(PlayerService playerService) {
-        this.playerService = playerService;
-    }
 
     @GetMapping("/players")
     public Flux<Player> all(@RequestParam("active") Optional<Boolean> active) {

@@ -3,6 +3,7 @@ package io.devchaos.player.service.service;
 import io.devchaos.player.service.dispatcher.PlayerKafkaDispatcher;
 import io.devchaos.player.service.domain.Player;
 import io.devchaos.player.service.repository.PlayerRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -14,17 +15,12 @@ import java.util.Optional;
  * @author Paulo Jesus
  */
 @Service
+@AllArgsConstructor
 public class PlayerServiceImpl implements PlayerService {
 
     private PlayerRepository playerRepository;
     private PlayerAuditService playerAuditService;
     private PlayerKafkaDispatcher playerKafkaDispatcher;
-
-    public PlayerServiceImpl(PlayerRepository playerRepository, PlayerAuditService playerAuditService, PlayerKafkaDispatcher playerKafkaDispatcher) {
-        this.playerRepository = playerRepository;
-        this.playerAuditService = playerAuditService;
-        this.playerKafkaDispatcher = playerKafkaDispatcher;
-    }
 
     @Override
     public Flux<Player> getAll(Optional<Boolean> active) {

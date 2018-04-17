@@ -3,6 +3,7 @@ package io.devchaos.player.service.service;
 import io.devchaos.player.service.domain.Player;
 import io.devchaos.player.service.domain.PlayerAudit;
 import io.devchaos.player.service.repository.PlayerAuditRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -12,12 +13,9 @@ import java.util.LinkedHashMap;
  * @author Paulo Jesus
  */
 @Service
+@AllArgsConstructor
 public class PlayerAuditServiceImpl implements PlayerAuditService {
     private PlayerAuditRepository playerAuditRepository;
-
-    public PlayerAuditServiceImpl(PlayerAuditRepository playerAuditRepository) {
-        this.playerAuditRepository = playerAuditRepository;
-    }
 
     @Override
     public Mono<Player> audit(Mono<Player> playerMono) {
