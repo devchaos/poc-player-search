@@ -1,0 +1,15 @@
+{
+  "index": {
+    "analysis": {
+      "analyzer": {
+        "lowercasean": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase"
+          ]
+        }
+      }
+    }
+  }
+}

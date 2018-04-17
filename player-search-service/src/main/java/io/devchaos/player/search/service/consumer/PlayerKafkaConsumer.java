@@ -2,8 +2,7 @@ package io.devchaos.player.search.service.consumer;
 
 import io.devchaos.comm.domain.PlayerEvent;
 import io.devchaos.player.search.service.config.PlayerKafkaInput;
-import io.devchaos.player.search.service.domain.Player;
-import io.devchaos.player.search.service.repository.PlayerRepository;
+import io.devchaos.player.search.service.service.PlayerIndexingService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -12,8 +11,6 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 
-import java.util.Optional;
-
 import static org.hibernate.validator.internal.util.Contracts.assertNotEmpty;
 
 @Slf4j
@@ -21,7 +18,7 @@ import static org.hibernate.validator.internal.util.Contracts.assertNotEmpty;
 @AllArgsConstructor
 public class PlayerKafkaConsumer {
 
-    private PlayerRepository playerRepository;
+    PlayerIndexingService playerIndexingService;
 
     @StreamListener(PlayerKafkaInput.INPUT)
     public void in(@Payload PlayerEvent playerEvent,
@@ -34,9 +31,7 @@ public class PlayerKafkaConsumer {
 
         log.info("Processing topic={} partition={} offset={} key={} PlayerEvent= {}", topic, partition, offset, key, playerEvent);
 
-        Optional<Player> player = playerRepository.findById(playerEvent.getPlayerId());
-
-        log.info("Player = {} was indexed", player);
+        playerIndexingService.index(playerEvent.getPlayerId());
     }
 
 }
