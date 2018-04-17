@@ -62,6 +62,8 @@ public class PlayerDocument {
 
     private boolean verified;
 
+    private String trustToken;
+
     public static PlayerDocument map(Player player) {
         return PlayerDocument.builder()
                 .id(player.getId())
