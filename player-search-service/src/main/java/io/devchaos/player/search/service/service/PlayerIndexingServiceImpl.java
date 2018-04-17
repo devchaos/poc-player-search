@@ -1,6 +1,6 @@
 package io.devchaos.player.search.service.service;
 
-import io.devchaos.player.search.service.domain.PlayerDocument;
+import io.devchaos.player.search.service.domain.player.PlayerDocument;
 import io.devchaos.player.search.service.repository.PlayerDocumentRepository;
 import io.devchaos.player.search.service.repository.PlayerRepository;
 import lombok.AllArgsConstructor;

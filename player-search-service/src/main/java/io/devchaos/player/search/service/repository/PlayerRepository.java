@@ -1,6 +1,6 @@
 package io.devchaos.player.search.service.repository;
 
-import io.devchaos.player.search.service.domain.Player;
+import io.devchaos.player.search.service.domain.player.Player;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

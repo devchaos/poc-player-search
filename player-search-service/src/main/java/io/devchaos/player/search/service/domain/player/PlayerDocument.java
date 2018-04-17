@@ -1,7 +1,13 @@
-package io.devchaos.player.search.service.domain;
+package io.devchaos.player.search.service.domain.player;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -17,6 +23,8 @@ import java.time.LocalDateTime;
  */
 @Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(indexName = PlayerDocument.COLLECTION_NAME, type = "player")
 @Setting(settingPath = "es-lowercase-analyzer.json")
 public class PlayerDocument {
@@ -45,8 +53,13 @@ public class PlayerDocument {
             }
     )
     private String email;
+
     private boolean active;
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createdDate;
+
     private boolean verified;
 
     public static PlayerDocument map(Player player) {

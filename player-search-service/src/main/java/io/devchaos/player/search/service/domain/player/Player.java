@@ -1,4 +1,4 @@
-package io.devchaos.player.search.service.domain;
+package io.devchaos.player.search.service.domain.player;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

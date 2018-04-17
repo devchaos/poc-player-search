@@ -1,6 +1,6 @@
 package io.devchaos.player.search.service.repository;
 
-import io.devchaos.player.search.service.domain.PlayerDocument;
+import io.devchaos.player.search.service.domain.player.PlayerDocument;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 /**
